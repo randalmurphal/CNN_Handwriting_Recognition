@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Description</title>
+    <link rel="stylesheet" href = "style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel = "stylesheet">
+<style>
+    body {margin:0;}
+
+
+    .topnav {
+        overflow: hidden;
+        background-color: #f1f1f1;
+    }
+
+    .topnav a {
+      float: right;
+      display: block;
+      color: #2c4964;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+      border-bottom: 3px solid transparent;
+      font-family: "Open Sans", sans-serif;
+    }
+
+    .topnav a:hover {
+      border-bottom: 3px solid #007bff;;
+    }
+
+    .topnav a.active {
+      border-bottom: 3px solid #007bff;;
+    }
+    
+    label.logo{
+        color: #2c4964;
+        font-size: 30px;
+        line-height: 40px;
+        padding: 0 30px;
+        font-weight: bold;
+        font-family: "Open Sans",sans-serif;            
+    }
+
+    .fa_custom {
+      float: right;
+      padding: 0 30px;  
+    }
+   .doctor {
+
+
+  background-blend-mode: multiply;
+  background-size: cover;
+  height: 100vh;
+  padding: 1em;
+  color: $white;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+} 
+
+</style>
+</head>
+<body>
+
+    <nav class="topnav">
+        <a href="{% url 'contributors'%}">Contributors</a>
+        <a class="active" href="{% url 'project'%}">Project Description</a>
+        <a href="{% url 'upload'%}">Upload</a>
+        <a href="{% url 'index' %}">Home</a>
+    </nav>
+    <br>
+     <div class="doctor">
+        <h1>Project Description</h1>
+
+  
+        <p>Did you ever hear the tragedy of Darth Plagueis the Wise? No. I thought not. It's not a story the Jedi would tell you. It's a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise. He could use the Force to influence the midi-chlorians to create... life. He had such a knowledge of the Dark Side that he could even keep the ones he cared about... from dying. He could actually... save people from death? The Dark Side of the Force is a pathway to many abilities some consider to be unnatural. What happened to him? He became so powerful, the only thing he was afraid of was... losing his power which, eventually of course, he did. Unfortunately, he taught his apprentice everything he knew. And then his apprentice killed him in his sleep. Ironic. He could save others from death... but not himself. Is it possible to learn this power? Not from a Jedi.</p>
+
+    </div>
+
+ 
+
+</body>
+</html>

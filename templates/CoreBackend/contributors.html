@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contributors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body {margin:0;}
+
+
+    .topnav {
+        overflow: hidden;
+        background-color: #f1f1f1;
+    }
+
+    .topnav a {
+      float: right;
+      display: block;
+      color: #2c4964;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+      border-bottom: 3px solid transparent;
+      font-family: "Open Sans", sans-serif;
+    }
+
+    .topnav a:hover {
+      border-bottom: 3px solid #007bff;;
+    }
+
+    .topnav a.active {
+      border-bottom: 3px solid #007bff;;
+    }
+    
+    label.logo{
+        color: #2c4964;
+        font-size: 30px;
+        line-height: 40px;
+        padding: 0 30px;
+        font-weight: bold;
+        font-family: "Open Sans",sans-serif;            
+    }
+
+    .fa_custom {
+      float: right;
+      padding: 0 30px;  
+    }
+    
+.sales-points {
+  padding: 12vh 0;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+@media (min-width: 40rem) {
+  .sales-points {
+    flex-direction: row;
+  }
+}
+
+.sales-point {
+  flex-basis: 30%;
+}
+
+        
+
+</style>
+</head>
+<body>
+
+    <nav class="topnav">
+        <label class = "logo"> Group 4</label>
+        <a class="active" href="{% url 'contributors'%}">Contributors</a>
+        <a href="{% url 'project'%}">Project Description</a>
+        <a href="{% url 'upload'%}">Upload</a>
+        <a href="{% url 'index' %}">Home</a>
+    </nav>
+    <div class="sales-points">
+      <div class="sales-point">
+        <h2>Data Processing</h2>
+        <p></p>
+      </div>
+      <div class="sales-point">
+        <h2>Neural Network</h2>
+        <p>Randy</p>
+        <p>Tycho</p>
+        <p>Ismail</p>
+        <p>Charrell</p>
+      </div>
+        <div class="sales-point">
+        <h2>Delivery</h2>
+            <p>Ismail</p>
+            <p>Charrell</p>
+            <p>Randy</p>
+            <p>Wing</p>
+        </div>
+
+    </div>
+
+ 
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body {margin:0;}
+
+
+    .topnav {
+        overflow: hidden;
+        background-color: #f1f1f1;
+    }
+
+    .topnav a {
+      float: right;
+      display: block;
+      color: #2c4964;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+      border-bottom: 3px solid transparent;
+      font-family: "Open Sans", sans-serif;
+    }
+
+    .topnav a:hover {
+      border-bottom: 3px solid #007bff;;
+    }
+
+    .topnav a.active {
+      border-bottom: 3px solid #007bff;;
+    }
+
+    label.logo{
+        color: #2c4964;
+        font-size: 30px;
+        line-height: 40px;
+        padding: 0 30px;
+        font-weight: bold;
+        font-family: "Open Sans",sans-serif;
+    }
+
+    .fa_custom {
+      float: right;
+      padding: 0 30px;
+    }
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,600');
+
+// variables
+$white: #FFF;
+$green: #0F9;
+$black: #444;
+
+// Styles
+* { box-sizing: border-box; margin-top: 0; }
+
+body {
+  font-family:  "Open Sans", sans-serif;
+  color: $black;
+  font-size: 1.1rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+td{
+    border:1px solid black;
+}
+table{
+    margin: auto;
+}
+.button {
+  font-family: Raleway, sans-serif;
+  background-color: #2c4964;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-block;
+  padding: .7em 1.7em;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px;
+
+  &:hover {
+
+
+  }
+}
+
+.doctor {
+  {% load static %}
+  background-image: url({% static 'CoreBackend/images/doctor.jpg'%} );
+  background-blend-mode: multiply;
+  background-size: cover;
+  height: 100vh;
+  padding: 1em;
+  color: $white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sales-points {
+  padding: 12vh 0;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+@media (min-width: 40rem) {
+  .sales-points {
+    flex-direction: row;
+  }
+}
+
+.sales-point {
+  flex-basis: 30%;
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+    <i class="fa fa-github fa_custom"></i>
+    <br>
+    <nav class="topnav">
+        <label class = "logo">ECS 171: Group 4</label>
+        <a href="{% url 'contributors'%}">Contributors</a>
+        <a href="{% url 'project'%}">Project Description</a>
+        <a href="{% url 'upload'%}">Upload</a>
+        <a href="{% url 'index' %}">Home</a>
+    </nav>
+
+    <div class="sales-points">
+     <div class="sales-point">
+        <h2>Download CSV</h2>
+            <form method="post">
+            {% csrf_token %}
+            <input type="submit" class="button" value="Download File">
+            </form>
+      </div>
+    </div>
+
+    <div class="sales-points">
+      <div class="sales-point">
+        <h2>EDA Results</h2>
+          <h3>We will be using an extension of the MNIST letter recognition data set.</h3>
+          <p>
+              <p style="text-decoration: underline">Reference Paper</p>
+              <p>https://arxiv.org/pdf/1702.05373.pdf</p>
+              This paper discusses the EMNIST data set, which is a data set that extends MNIST to recognition of handwritten letters in a more challenging manner. The paper goes into detail about benchmarks of the set, as well as a validation of the set that establishes its comparability to the original MNIST set.
+          </p>
+          <br>
+          <div id="prelim_analysis">
+              <p style="text-decoration: underline">Let's start analysing our dataset!</p>
+              <p>We analyzed our data set by looking at the size of the training and testing set, as well as the dimension of an image of a letter. We have provided some examples of samples in the set to give an idea of the data contained in our set, as well as the manner in which the letters are classified.</p>
+              <ul>
+                  <li>Number of training sample:  124800</li>
+                  <li>Number of testing  sample:  20800</li>
+                  <li>EMINST letter image has same dimension (28 x 28) as MINST</li>
+              </ul>
+              <p>Try to see if we can distinguish these letters with our eyes ...</p>
+              <table>
+                  <tr>
+                      <td><img src="{% static 'CoreBackend/images/prelim_j.png' %}"></td>
+                      <td><img src="{% static 'CoreBackend/images/prelim_r.png' %}" ></td>
+                      <td><img src="{% static 'CoreBackend/images/prelim_h.png' %}"></td>
+                  </tr>
+                  <tr>
+                      <td>The letter J</td>
+                      <td>The letter R</td>
+                      <td>The letter H</td>
+                  </tr>
+              </table>
+              <p>It's clear that there is some ambiguity in the way the letters are written. For instance, the middle letter could be seen as a lowercase h, or a lowercase n as the classifier as specified. In addition, the last letter may not look like a letter at all, but it is in fact classified to be a lowercase letter r. These examples are shown to give a visual representation of how vague/ambiguous letters can be, and the high expectations that we have of our classifier to be able to recognize them.</p>
+          </div>
+          <br>
+          <div>
+              <p style="text-decoration: underline">How many different kinds of letters are there?</p>
+              <table style="border:2px solid black">
+                  <tr>
+                      <td>The Letter N</td>
+                      <td>The Letter W</td>
+                  </tr>
+                  <tr>
+                      <td><img src="{% static 'CoreBackend/images/letterexpo_n1.png' %}"></td>
+                      <td><img src="{% static 'CoreBackend/images/letterexpo_w1.png' %}"></td>
+                  </tr>
+                  <tr>
+                      <td><img src="{% static 'CoreBackend/images/letterexpo_n2.png' %}"></td>
+                      <td><img src="{% static 'CoreBackend/images/letterexpo_w2.png' %}"></td>
+                  </tr>
+                  <tr>
+                      <td><img src="{% static 'CoreBackend/images/letterexpo_n3.png' %}"></td>
+                      <td><img src="{% static 'CoreBackend/images/letterexpo_w3.png' %}"></td>
+                  </tr>
+                  <tr>
+                      <td><img src="{% static 'CoreBackend/images/letterexpo_n4.png' %}"></td>
+                      <td><img src="{% static 'CoreBackend/images/letterexpo_w4.png' %}"></td>
+                  </tr>
+                    <tr>
+                      <td><img src="{% static 'CoreBackend/images/letterexpo_n5.png' %}"></td>
+                      <td><img src="{% static 'CoreBackend/images/letterexpo_w5.png' %}"></td>
+                  </tr>
+              </table>
+
+          </div>
+
+          <div id="InternalLetter">
+              <p style="text-decoration: underline">What is inside the image?</p>
+              <p>We converted an image of a letter to greyscale and printed the greyscale value at each pixel. In this way, the network is able to distinguish between different types of letters.</p>
+              <img src="{% static 'CoreBackend/images/JNumber.png' %}">
+          </div>
+
+          <div id="EDA">
+              <p style="text-decoration: underline">EDA procedure</p>
+              <p>All letters in the training dataset have 4800 samples. As seen below:</p>
+              <img src="{% static 'CoreBackend/images/TrainGraph.png' %}">
+              <p>All letters in the testing dataset have 800 samples. As seen below:</p>
+              <img src="{% static 'CoreBackend/images/TestGraph.png' %}">
+          </div>
+
+          <div id="Outliers">
+              <p></p>
+              <p>
+                  It is possible for an image dataset to consist of outliers, e.g. in a human and chimpanzee dataset there exists an image of a fish; however, the traditional definition of an outlier is not as applicable for an image dataset.
+                However, related methodology is still being investigated. A famous paper which is established in 2016: https://papers.nips.cc/paper/2017/file/9ef2ed4b7fd2c810847ffa5fa85bce38-Paper.pdf
+This paper goes in depth into estimation of uncertainty using deep neural networks, proposing an alternative type of non-Bayesian network that produces high quality measures of uncertainty with very little need for human intervention. We referred to this paper when doing research on outlier classification for the EMNIST set.
+It seems that the EMNIST set has better performance. These graphs were taken from the paper referenced above.
+              </p>
+          </div>
+
+          <img src="{% static 'CoreBackend/images/PaperGraph.png' %}">
+
+      </div>
+    </div>
+
+
+</body>
+</html>

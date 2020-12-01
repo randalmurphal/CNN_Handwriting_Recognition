@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body {margin:0;}
+
+
+    .topnav {
+        overflow: hidden;
+        background-color: #f1f1f1;
+    }
+
+    .topnav a {
+      float: right;
+      display: block;
+      color: #2c4964;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+      border-bottom: 3px solid transparent;
+      font-family: "Open Sans", sans-serif;
+    }
+
+    .topnav a:hover {
+      border-bottom: 3px solid #007bff;;
+    }
+
+    .topnav a.active {
+      border-bottom: 3px solid #007bff;;
+    }
+
+    label.logo{
+        color: #2c4964;
+        font-size: 30px;
+        line-height: 40px;
+        padding: 0 30px;
+        font-weight: bold;
+        font-family: "Open Sans",sans-serif;
+    }
+
+    .fa_custom {
+      float: right;
+      padding: 0 30px;
+    }
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,600');
+
+// variables
+$white: #FFF;
+$green: #0F9;
+$black: #444;
+
+// Styles
+* { box-sizing: border-box; margin-top: 0; }
+
+body {
+  font-family:  "Open Sans", sans-serif;
+  color: $black;
+  font-size: 1.1rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+#id_file{
+ font-family: Raleway, sans-serif;
+  background-color: #2c4964;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-block;
+  padding: .7em 1.7em;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px;
+
+}
+
+.button {
+  font-family: Raleway, sans-serif;
+  background-color: #2c4964;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-block;
+  padding: .7em 1.7em;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px;
+
+  &:hover {
+
+
+  }
+}
+
+.doctor {
+  {% load static %}
+  background-image: url({% static 'CoreBackend/images/doctor.jpg'%} );
+  background-blend-mode: multiply;
+  background-size: cover;
+  height: 100vh;
+  padding: 1em;
+  color: $white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sales-points {
+  padding: 12vh 0;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+@media (min-width: 40rem) {
+  .sales-points {
+    flex-direction: row;
+  }
+}
+
+.sales-point {
+  flex-basis: 30%;
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+    <nav class="topnav">
+        <label class = "logo">ECS 171: Group 4</label>
+        <a href="{% url 'contributors'%}">Contributors</a>
+        <a href="{% url 'project'%}">Project Description</a>
+        <a class="active" href="{% url 'upload'%}">Upload</a>
+        <a  href="{% url 'index' %}">Home</a>
+    </nav>
+
+    <div class="doctor">
+        <h2>Upload Instructions</h2>
+        <p>Please fill out all necessary sections using either black or blue ink. Take a picture of the completed form, allowing all edges to be in the frame of the photo. Upload the form and select "okay" if the image is legable/ no blurry....blah blah blah</p>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit" class="button">
+        </form>
+    </div>
+
+    <div class="sales-points">
+      <div class="sales-point">
+        <h2>Brief Project Description</h2>
+        <p>Maecenas id volutpat tellus. Praesent at rhoncus ante, non sollicitudin nisl.</p>
+      </div>
+      <div class="sales-point">
+        <h2>Teams</h2>
+        <p>Neural Networks</p>
+        <p>Data Processing</p>
+        <p>Delivery</p>
+      </div>
+      <div class="sales-point">
+        <h2>Data Visualization</h2>
+        <p>Maecenas id volutpat tellus. Praesent at rhoncus ante, non sollicitudin nisl.</p>
+      </div>
+    </div>
+
+
+
+</body>
+</html>
